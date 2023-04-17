@@ -4,7 +4,7 @@ html{font-size:15px;}
 body{
     position: relative;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: var(--color-prime-1);
+    color: var(--color-neutral-0);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -12,6 +12,9 @@ body{
     margin: 0;
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
+    
+    counter-reset:pageCount;
 }
 #bg{
     position: fixed;
@@ -47,14 +50,20 @@ body{
 }
 header{
     position: absolute;
-    z-index: 99;
     inset: 0;
-    display: flex;
-    flex-direction: column;
-    place-content: flex-start;
-    place-items: flex-end;
+    top: 0;
+    inset-inline:0;
+    display: flex; 
+    place-content: space-between;
+    place-items: flex-start;
     padding: .75em;
     overflow: hidden;
+}
+header h1{
+    font-size: 0.9em; 
+    text-shadow: var(--text-shad);
+    font-family: unset;
+    color: var(--color-prime-1);
 }
 header input{
     display: none;
@@ -62,7 +71,8 @@ header input{
 header input[type=checkbox]:checked ~ label{
     --time:1.185s;
     background-color: var(--color-warning);
-    text-shadow: var(--text-blox), var(--text-shad);
+    text-shadow: var(--text-blox);
+    z-index: 99;
 }
 header input[type=checkbox]:checked ~ label::before,
 header input[type=checkbox]:checked ~ label::after{
@@ -77,6 +87,7 @@ header input[type=checkbox]:checked ~ label::after{
 }
 header input[type=checkbox]:checked ~ label > * {
     opacity: 1;
+    z-index: 98;
     transition-delay: 0s;
     --time:1s;
     transform: scale(4) translateX(-375%);
@@ -152,6 +163,7 @@ header label:hover > *{
 }
 /* nav menu styles */
 header nav{
+    z-index: 97;
     --time: 1.25s;
     position: absolute; 
     inset: 0;
@@ -207,6 +219,12 @@ header nav a{
     -webkit-text-stroke-color: var(--color-second-1); */
     /* color:transparent; */
     transition-property: background-color, color, text-shadow;
+
+    
+    counter-increment: pageCount;
+}
+header nav a::before{
+    content: counters(pageCount, ".", decimal-leading-zero) ". ";
 }
 header nav a:hover{
     text-shadow: 0 0 0px black;
@@ -220,12 +238,17 @@ body::-webkit-scrollbar{
   }
 main{
     position: absolute;
-    inset: 6em 4.5em;
+    /* inset: 6em 4.5em; */
     inset: 0;
-    margin: 6em 4.5em;
+    margin: 6em 6.5em;
     perspective: 20em;
     perspective-origin: 50% 50%;
     /* overflow: hidden; */
+}
+h3,h4,h5,h6{
+    color: var(--color-accent-1);
+    font-weight: bold;
+    margin-top: .4em;
 }
 main > .container{
     transform-style: preserve-3d;
@@ -236,27 +259,46 @@ section{
     scroll-behavior: smooth;
     max-height: 100%;
 }
-section > *{
-    padding: 1em;
-
-}
 section::before{
     content: "";
     z-index: -50;
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    opacity: 0.3;
+    opacity: 0.5;
     /* background-color: black; */
     background-image: linear-gradient(-90deg, black, transparent);
-    filter: blur(16px);
+    filter: blur(12px);
     transform-origin: right;
-    transform: perspective(20em) rotateY(-10deg) rotateX(-6deg) rotateZ(-1deg) translateZ(-20px) translateX(-35px) translateY(50px) scale(1.3,1);
+    transform: perspective(20em) rotateY(-10deg) rotateX(-6deg) rotateZ(-1deg) translateZ(-20px) translateX(-45px) translateY(50px) scale(1.8,1.1);
 }
-h1{
-    font-size: 5em;
+/* Extra fancy way of selecting the section heading */
+section > .container > *:first-child{
+    padding: 0.25em 0.4em;
+}
+section h2{
+    font-size: 3.9em;
     color: var(--color-prime-1);
-    
     text-shadow: var(--text-blox), var(--text-shad);
-
+}
+section .block{
+    --block: .7em;
+    border-bottom-right-radius: inherit;
+    border-bottom-left-radius: inherit;
+    padding: var(--block) 2.5em;
+    background-color: var(--color-neutral-7);
+    background-blend-mode: luminosity;
+    mix-blend-mode: luminosity;
+    backdrop-filter: blur(var(--blur));
+    font-size: .8em;
+}
+section .block h3{
+    font-size: 1.5em;
+}
+section .block *:not(:first-child){
+    padding-top: var(--block);
+}
+section p{
+    line-height: 1.3;
+    font-stretch: expanded;
 }
