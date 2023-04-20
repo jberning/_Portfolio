@@ -5,12 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio of Jay Berning</title>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
     <link rel="stylesheet" href="http://web.simmons.edu/~grovesd/comm244/notes/week4/reset.css">
     <link rel="stylesheet" href="./css/reset2.css">
     <link rel="stylesheet" href="./css/signiture.css">
     <link rel="stylesheet" href="./css/root.css">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
     <style>
         details > summary::-webkit-details-marker {
             display:none;
@@ -33,35 +36,42 @@
 <body>
     <div id="bg"><div id="scene"><div class="signiture"></div></div></div>
     <header>
-        <h1>Portfolio for Jay Berning</h1>
+        <h1><span hidden>Portfolio for </span><a href="#s1">Jay Berning</a></h1>
         <input type="checkbox" name="menu" id="menu">
         <label class="btn glass" for="menu"><span>Menu</span></label>
         <nav>
             <ul>
-                <li><a href="#1">Mission</a></li>
-                <li><a href="#1">Experience</a></li>
-                <li><a href="#1">Projects</a></li>
-                <li><a href="#1">Ipsem</a></li>
-                <li><a href="#1">Contact</a></li>
+                <li><a href="#s1">Mission</a></li>
+                <li><a href="#s2">Experience</a></li>
+                <li><a href="#s3">Projects</a></li>
+                <li><a href="#s4">Ipsem</a></li>
+                <li><a href="#s5">Contact</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <div class="container">
-            <section>
-                <div class="containter glass">
-                    <h2>Jay</h2>
+        <div class="container app">
+            <section id="s1">
+                <div class="container">
+                    <div class="glass"></div>
+                    <h2><span>Jay Berning</span></h2>
                     <div class="block">
-                        <h3>Front End Web Developer</h3>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti veniam esse aspernatur perspiciatis, ducimus ullam non? </p>
-                        <p>Omnis dolor, fuga deserunt harum quaerat blanditiis provident sed ipsum, dolore hic ratione mollitia?</p>
+                        <img id="portrait"
+                        src="./images/jurica-koletic-7YVZYZeITc8-unsplash.jpg" alt="" srcset="">
+                        <div>
+                            <h3>Front End Web Developer</h3>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti veniam esse aspernatur perspiciatis, ducimus ullam non? </p>
+                            <p>Omnis dolor, fuga deserunt harum quaerat blanditiis provident sed ipsum, dolore hic ratione mollitia?</p>
+                            <button>Get In Touch</button>
+                        </div>
+                        
                     </div>
                 </div>
             </section>
-            <section>
-                <div class="container glass">
-                    <h2>Mission</h2>
-                    <img src="./images/sl_043020_30500_19.jpg" alt="">
+            <section id="s2">
+                <div class="container ">
+                    <div class="glass"></div>
+                    <h2><span>Mission</span></h2>
                     <div class="block">
                         <h3>Connecting the Computer to the Human</h3>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates amet cupiditate pariatur! Soluta delectus sapiente dignissimos assumenda nemo at, hic voluptate voluptatum necessitatibus corrupti repellendus fugiat unde nulla veritatis totam.</p>
@@ -72,20 +82,24 @@
                     </div>
                 </div>
             </section>
-            <section>
-                <div class="container glass">
-                    <h2>Experience</h2>
+            <section id="s3">
+                <div class="container">
+                    <div class="glass"></div>
+                    <h2><span>Experience</span></h2>
                     <div class="block">
                         <a href="http://">Resume</a>
                     </div>
                 </div>
             </section>
-            <section>
-                <div class="container glass">
-                    <h2>Work Samples</h2>
+            <section id="s4">
+                <div class="container">
+                    <div class="glass"></div>
+                    <h2><span>Work Samples</span></h2>
                     <div class="block">
+                        <p>Animations bring a website to life and captivate the attention of the visitor. One of the most common animations on websites is hover effects. Often, their purpose is to highlight important web page sections or elements. Hover effects can also add or emphasize interactive aspects of a page.</p>
                         <ul>
                             <li>
+                                <img src="./images/screenshot.png" alt="">
                                 <a href="https://jberning.github.io/SampleSite/" target="_blank" rel="noopener noreferrer">Front End Work Sample</a>
                                 <details>
                                     <summary>i</summary>
@@ -115,9 +129,10 @@
                     </div>
                 </div>
             </section>
-            <section>
-                <div class="container glass">
-                    <h2>Contact</h2>
+            <section id="s5">
+                <div class="container">
+                    <div class="glass"></div>
+                    <h2><span>Contact</span></h2>
                     <div class="block">
                         <a href="https://www.linkedin.com/in/jay-berning-bb7a3b32/" target="_blank" rel="noopener noreferrer">Linked In Profile</a>
                         <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="jay-berning-bb7a3b32" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/jay-berning-bb7a3b32?trk=profile-badge">Jay Berning</a></div>
@@ -125,10 +140,23 @@
                     </div>
                 </div>
             </section>
-            <footer>
-                <nav></nav>
-            </footer>
         </div>
     </main>
+    <footer>
+        <nav><ul>
+            <i class='fab fa-codepen'>&#xf1cb;</i>
+            <i class='fab fa-creative-commons'>&#xf25e;</i>
+            <i class='fab fa-css3-alt'>&#xf38b;</i>
+            <i class='fab fa-html5'>&#xf13b;</i>
+            <i class='fab fa-js'>&#xf3b8;</i>
+            <i class='fab fa-elementor'>&#xf430;</i>
+            <i class='fab fa-wordpress-simple'>&#xf411;</i>
+            <i class='fab fa-facebook-square'></i>
+            <i class='fab fa-facebook-github'></i>
+            <i class='fab fa-instagram'></i>
+            <i class='fab fa-linkedin'></i>
+            <i class='fab fa-react'></i>
+        </ul></nav>
+    </footer>
 </body>
 </html>

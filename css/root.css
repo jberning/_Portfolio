@@ -84,15 +84,18 @@ li{
     --tp-props:"";
     cursor: pointer;
 }
+:root{
+    --glass-border-radius: .75em;
+}
 .glass {
     /* From https://css.glass */
     background-color: rgba(255, 255, 255, 0.185);
-    border-radius: .75em;
+    border-radius: var(--glass-border-radius);
     box-shadow: var(--box-shad);
     --blur: .4em;
     -webkit-backdrop-filter: blur(var(--blur));
     backdrop-filter: blur(var(--blur));
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    /* border: 2px solid rgba(255, 255, 255, 0.3); */
     --tp-props: "opacity";
     opacity: .75;
 }
