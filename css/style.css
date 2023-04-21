@@ -5,6 +5,7 @@ body{
     position: relative;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: var(--color-neutral-0);
+    background-color: var(--color-neutral-7);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -15,6 +16,11 @@ body{
     /* overflow: hidden; */
     counter-reset:pageCount linkCount;
 }
+
+body.state-loaded .loader-container{display: none;}
+body.state-loading .loader ~ *{
+    display: none;
+}
 @media (prefers-color-scheme: light){
     [data-theme="dark"]{
         display: none;
@@ -24,6 +30,88 @@ body{
     [data-theme="light"]{
         display: none;
     }
+}
+.loader-container{ 
+    z-index: 999;
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background-color: var(--color-neutral-7);
+}
+body.state-load-transition .loader-container.fade-out{
+    transition-duration: 3s;
+    transition-delay: .25s;
+    transition-timing-function: ease-in;
+    transition-property: background-color;
+    /* opacity: 0; */
+    background-color: transparent;
+}
+body.state-load-transition .loader-container.fade-out .loader{
+    transition-duration: inherit;
+    transition-delay: inherit;
+    transition-timing-function: inherit;
+    transition-property: font-size, --rot;
+    font-size: 100vw;
+    --rot: 0;
+}
+.loader{
+    font-size: 0.5em;
+    position: absolute;
+    color: var(--color-neutral-1);
+    --bw: 0.75em;
+    --lw: 15em;
+    border: currentColor solid var(--bw);
+    width: 5.5em;
+    aspect-ratio: 1;
+    border-radius: 100%;
+    /* margin-top: calc(50vh - 6%); */
+    transform-origin: center center;
+    
+    --rot:0deg;
+    rotate: var(--rot);
+    animation: loading 3s infinite linear;
+}
+@property --rot {
+  initial-value: 0deg;
+  inherits: true;
+  syntax: '<angle>';
+}
+@keyframes loading{
+    to {
+        --rot: 360deg;
+    }
+}
+.loader::before{
+    content:"";
+    display: block;
+    position: absolute;
+    width: var(--lw);
+    /* inset-inline: calc(var(--bw) * -1); */
+    /* right: -140%; */
+    left: 100%;
+    top: calc(50% - var(--bw)/2);
+    border-top: currentColor solid var(--bw);
+    transform-origin: 50% 50%;
+    /* transform: translate(calc(100% - var(--bw)), 300%); */
+}
+
+.loader::after {
+    content: "";
+    display: block;
+    position: absolute;
+    /* inset: calc(var(--bw) * -1); */
+    top: calc(var(--bw) * -1);
+    left: calc(100% + var(--lw));
+    width: inherit;
+    aspect-ratio: inherit;
+    border: inherit;
+    border-radius: inherit;
+    font-size: inherit;
+    border-top-color: var(--color-contrast-1);
+    /* transform-origin: calc(100% + var(--bw)*2 + var(--lw)) 50%; */
+    /* transform: translateX(calc(100% - var(--bw)*2 + var(--lw))); */
+    rotate: calc(var(--rot) * -3 + 0deg);
 }
 #bg{
     position: fixed;
@@ -490,4 +578,10 @@ section p{
 }
 #s1 #portrait{
     grid-row: 1 / span 99;
+}
+
+
+/* footer */
+footer{
+    display: none;
 }
