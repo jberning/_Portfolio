@@ -59,14 +59,11 @@ body.state-load-transition .loader-container.fade-out .loader {
 .theme-circle{
     --bw: 0.75em;
     --lw: 15em;
-    --rot:0deg;
     color: var(--color-neutral-1);
     border: currentColor solid var(--bw);
     width: 5.5em;
     aspect-ratio: 1;
     border-radius: 100%;
-    rotate: var(--rot);
-    animation: rotating 3s infinite linear;
 
 }
 .loader {
@@ -75,13 +72,16 @@ body.state-load-transition .loader-container.fade-out .loader {
     /* margin-top: calc(50vh - 6%); */
     transform-origin: center center;
     
+    --rot:0deg;
+    rotate: var(--rot);
+    animation: loading 3s infinite linear;
 }
 @property --rot {
   initial-value: 0deg;
   inherits: true;
   syntax: '<angle>';
 }
-@keyframes rotating {
+@keyframes loading {
     to {
         --rot: 360deg;
     }
@@ -147,10 +147,7 @@ body.state-load-transition .loader-container.fade-out .loader {
     inset: 0;
     opacity: 0.15;
     filter: drop-shadow(-3em 5em 1em black) blur(0.2em);
-}
-#scene .signiture{
     transform: translate(-304px, -357px) scale(0.55);
-
 }
 header {
     position: fixed;
@@ -167,7 +164,7 @@ header {
     pointer-events: none;
     color: var(--color-prime-1);
 }
-header > *{
+header label, header nav{
     pointer-events: all;
 }
 header h1 {
@@ -175,15 +172,7 @@ header h1 {
     font-family: unset;
     font-variant:small-caps;
 }
-header a {
-    color:inherit; 
-    text-decoration: none;
-    padding: .25em; opacity: .8;
-}
-header a:hover, header a:focus{
-    transition-property: opacity;
-    opacity: 1;
-}
+header a {color:inherit; text-decoration: none;}
 header input {
     display: none;
 }
@@ -191,25 +180,10 @@ header nav a {
     width: 100%;
     font-family: var(--head);
 	text-decoration: none;
-
-    counter-increment: linkCount;
 }
 header nav a::before {
     content: counters(linkCount, ".", decimal-leading-zero) ". ";
-    color:var(--color-accent-1);
-}
-header nav li{ position: relative;}
-header nav span.theme-circle{
-    position: absolute;
-    z-index: -1;
-    font-size: .2em;
-    opacity: 0;
-    transition-property: translate, opacity;
-    border-top-color: var(--color-contrast-5);
-}
-header nav a:hover ~ span, header nav a:focus ~ span{
-    opacity: 1;
-    translate: 0% 0%;
+    /* color:var(--color-contrast-1); */
 }
 
 
@@ -231,7 +205,7 @@ main {
     /* overflow: hidden; */
 }
 h3,h4,h5,h6 {
-    color: var(--color-accent-2);
+    color: var(--color-accent-1);
     font-weight: bold;
     margin-top: .4em;
 }
@@ -450,6 +424,9 @@ section .block {
 section .block h3 {
     font-size: 1.5em;
 }
+/* section .block *:not(:first-child) {
+    padding-top: var(--block);
+} */
 section p {
     line-height: 1.5em;
     letter-spacing: 0.1em;
@@ -494,16 +471,6 @@ footer {
         background-position: center 35%;
         background-size: 52%;
         background-repeat: no-repeat;
-        filter: blur(2px);
-    }
-    header .banner-mobile {
-        position: absolute;
-        inset-inline: 0;
-        top: 0;
-        height: var(--header-height);
-        background-color: var(--color-second-5);
-        opacity: 0.4;
-        
     }
     header h1 {
         font-size: 2em; 
@@ -633,7 +600,6 @@ footer {
         transform: translateX(300%);
         will-change: var(--change);
         transition-property:var(--change);
-        font-size: 3em;
     }
     header nav li:nth-child(2) {
         --t: .4s;
@@ -652,6 +618,7 @@ footer {
         background-color: var(--color-second-2);
     }
     header nav a {
+        font-size: 3em;
         padding:.25em .5em;
         color: var(--color-second-1);
         background-color: var(--color-second-4);
@@ -662,14 +629,9 @@ footer {
         -webkit-text-stroke-color: var(--color-second-1); */
         /* color:transparent; */
         transition-property: background-color, color;
-    }
-    nav span.theme-circle{
-        left: -20%;
-        top: 18%;
-        translate: -150% 0%;
-    }
 
-
+        counter-increment: linkCount;
+    }
     .app > *{
         height: auto;
         font-size: .8em;
@@ -692,10 +654,5 @@ footer {
     header nav ul{
         display: flex;
         gap: 4vw;
-    }
-    nav span.theme-circle{
-        left: 50%;
-        top: 110%;
-        translate: 0% -350%;
     }
 }
