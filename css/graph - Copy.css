@@ -1,0 +1,171 @@
+html{
+    font-size: 10px;
+}
+body{
+    --color: var(--color-second-1, darkblue);
+    --color-icon: var(--color-accent-1,black);
+    --color-point-bg: var(--color-prime-7, white)
+    --border-width: 0.4em;
+    --point-width: 5em;
+    --line-width: 18em;
+    --node-offset: 0.9em;
+    background-color: transparent;
+    color:var(--color, inherit);
+    font-size: min(1.5vw,2vh);
+}
+:where(*,*::before, *::after) {
+    /* box-sizing: content-box; */
+}
+div{display: block;}
+.node{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: space-between;
+    width: calc(var(--line-width) + (var(--point-width) * 2));
+    transform-origin: calc(var(--point-width)/2 - var(--node-offset)) 50%;
+    --tx: calc(var(
+    --point-width) + (var(--border-width)*2) );
+    --tx: calc(var(
+    --central-width) / 2 - var(--point-width) / 2 + var(--node-offset));
+    translate: var(--tx) 0;
+    --rot:0deg;
+    z-index: -1;
+    rotate: var(--rot);
+    animation: wiggle-rot 3s infinite alternate cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    animation-composition: accumulate;
+    animation-fill-mode: both;
+    animation-play-state: running;
+}
+.line{
+    font-size: 1em;
+    /* inset-inline: 0; */
+    /* width: calc(var(--point-width) + (var(--border-width)*2)); */
+    width: var(--line-width);
+    border-top: var(--border-width) solid currentColor;
+    box-sizing: content-box;
+}
+.point{
+    font-size: 1em;
+    border: var(--border-width) solid currentColor;
+    border-radius: 100%;
+    width: var(--point-width);
+    aspect-ratio: 1;
+    background-position: center;
+    background-size: 60%;
+    background-repeat: no-repeat;
+    box-sizing: content-box;
+    background-color: var(--color-point-bg);
+    /*  */
+    --url:"";
+    --mask: var(--url) center center no-repeat;
+    -webkit-mask: var(--mask);
+    mask: var(--mask);
+    -webkit-mask-size: contain;
+    mask-size: contain;
+}
+.point .input{
+    background-color: transparent ;
+    border-color: transparent;
+    /* border-right-color: currentColor; */
+    position: relative;
+    /* width: 5em; */
+}
+.point .output{
+    rotate: calc(var(--rot) * -1);
+}
+.central{
+    --central-width: 7em;
+    position: absolute;
+    width: var(--central-width);
+    --url: url(../images/web-page-svgrepo-com.svg);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    place-items: center;
+    z-index: 1;
+    font-size: 1em;
+    animation: 1s infinite cubic-bezier(0.68, -0.55, 0.27, 1.55) alternate;
+    animation-name:wiggle-top, wiggle-left;
+    animation-duration:3s, 4.5s;
+    animation-composition: accumulate;
+}
+.computer{ --url: url(../images/computer-svgrepo-com.svg);}
+.tablet{ --url: url(../images/tablet-material-with-play-mark-svgrepo-com.svg);}
+.phone{ --url: url(../images/phone-225-svgrepo-com.svg);}
+.human{
+    --url: url(../images/profile-round-1346-svgrepo-com.svg);
+}
+
+
+/*  */
+.node:nth-of-type(1){
+    --rot: 546deg;
+}
+.node:nth-of-type(2){
+    --rot: 202deg;
+  animation-delay:.2s;
+}
+.node:nth-of-type(3){
+    --rot:160deg;
+  animation-delay:-1s;
+}
+/* humans */
+.node:nth-of-type(4){
+    --rot: -35deg;
+  animation-delay: .2s;
+}
+.node:nth-of-type(5){
+    --rot: -20deg;
+  animation-delay: -.5s;
+}
+.node:nth-of-type(6){
+    --rot: -4deg;
+  animation-delay:-1.2s;
+}
+.node:nth-of-type(7){
+    --rot: 11deg;
+  animation-delay: .8s;
+}
+.node:nth-of-type(8){
+    --rot: 39deg;
+  animation-delay: -1.2s;
+}
+@property --rot {
+  initial-value: 0deg;
+  inherits: true;
+  syntax: '<angle>';
+}
+@keyframes wiggle-rot{
+    to {
+        --rot:1.6deg;
+/*         rotate: 2deg; */
+    }
+}
+@keyframes wiggle-top {
+  to {
+    transform: translateY(5%);
+  }
+}
+@keyframes wiggle-left {
+  to {
+    transform:translateX(5%);
+  }
+}
+
+@property --line-grow {
+  initial-value: 0em;
+  inherits: true;
+  syntax: '<length>';
+}
+@keyframes line-grow {
+  from {
+/*     --line-width:-5em; */
+    scale:0;
+  }
+}
+body{
+    animation: line-grow 2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}

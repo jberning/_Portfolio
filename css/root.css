@@ -6,11 +6,13 @@
     --color-prime-4:#008B8B;
     --color-prime-5:#006F6F;
     --color-prime-6:#005757;
-    --color-second-1: #5067BA;
-    --color-second-2: #304BAE;
-    --color-second-3: #13319D;
-    --color-second-4: #0D257E;
-    --color-second-5: #081B62;
+    --color-prime-7:#003838;
+    --color-second-1: #aebfff;
+    --color-second-2: #5067BA;
+    --color-second-3: #304BAE;
+    --color-second-4: #13319D;
+    --color-second-5: #0D257E;
+    --color-second-6: #081B62;
     --color-accent-1:hsl(107, 70%, 50%);
     --color-accent-2:#29c300;
     --color-accent-3:#219C00;
@@ -53,7 +55,7 @@
         0 20px 20px 0 rgba(0,0,0,.15);
     --time:.185s;
     --eo:cubic-bezier(0.075, 0.82, 0.165, 1);
-    --head:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    --head-FF:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
  *, *::before, *::after{
     transition-delay: 0s;
@@ -65,8 +67,8 @@
      display: none;
  }
 
- h1,h2{
-    font-family: var(--head);
+ :is(h1,h2){
+    font-family: var(--head-FF);
 }
 li{
     display: flex;

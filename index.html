@@ -42,10 +42,10 @@
         <label class="btn glass" for="menu"><span>Menu</span></label>
         <nav>
             <ul>
-                <li><a href="#s1">Mission</a><span class="theme-circle"></span></li>
-                <li><a href="#s2">Experience</a><span class="theme-circle"></span></li>
-                <li><a href="#s3">Projects</a><span class="theme-circle"></span></li>
-                <li><a href="#s4">Ipsem</a><span class="theme-circle"></span></li>
+                <li><a href="#s1">Ipsem</a><span class="theme-circle"></span></li>
+                <li><a href="#s2">Mission</a><span class="theme-circle"></span></li>
+                <li><a href="#s3">Experience</a><span class="theme-circle"></span></li>
+                <li><a href="#s4">Projects</a><span class="theme-circle"></span></li>
                 <li><a href="#s5">Contact</a><span class="theme-circle"></span></li>
             </ul>
         </nav>
@@ -55,16 +55,38 @@
             <section id="s1">
                 <div class="container">
                     <div class="glass"></div>
-                    <h2><span>Front End Web Developer</span></h2>
+                    <h2><span>Web Creator</span></h2>
                     <div class="block">
-                        <img id="portrait" lazy
-                        src="./images/jurica-koletic-7YVZYZeITc8-unsplash.jpg" alt="" srcset="">
-                        <!-- <div> -->
-                            <h3>I <em>connect</em> the computer to the <strong><em>human</em></strong></h3>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti veniam esse aspernatur perspiciatis, ducimus ullam non? </p>
-                            <p>Omnis dolor, fuga deserunt harum quaerat blanditiis provident sed ipsum, dolore hic ratione mollitia?</p>
-                            <button>Get In Touch</button>
-                        <!-- </div> -->
+                        <div class="card-flip">
+                            <div class="card-flip-content">
+                                <div class="front">
+                                    <img id="portrait"
+                                    src="./images/profile-pic.jpg" alt="" srcset="">
+                                </div>
+                                <div class="back">
+                                    <img src="./images/avatar.jpg" alt="" srcset="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-line-roll">
+                            <ul class="job-title-list ">
+                                <li>
+                                    <h3>Front End Web Developer/Engineer</h3>
+                                </li>
+                                <li><h3>E-learning Developer</h3></li>
+                                <li><h3><s>Adobe Flash Developer</s></h3></li>
+                                <li><h3>Animation/Interactive Designer</h3></li>
+                                <li><h3>Graphic Designer</h3></li>
+                                <li><h3>Artist</h3></li>
+                                <li><h3>Programmer</h3></li>
+                            </ul>
+                        </div>
+                        <h4>I <em>connect</em> the computer to the <strong><em>human</em></strong></h4>
+                        
+                        <div class="button-set">
+                            <a role="button" class="button" href="#s2">Find Out How</a>
+                            <a role="button" class="button cta" href="#s5">Get In Touch</a>
+                        </div>
                         
                     </div>
                 </div>
@@ -75,11 +97,24 @@
                     <h2><span>Mission</span></h2>
                     <div class="block">
                         <h3>Connecting the Computer to the Human</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates amet cupiditate pariatur! Soluta delectus sapiente dignissimos assumenda nemo at, hic voluptate voluptatum necessitatibus corrupti repellendus fugiat unde nulla veritatis totam.</p>
+                        <div class="grid-column">
+                            <p>Every Computer program needs a litle help to connect to the end user.  That's where I come in; creating the interface between the two</p>
+                            <iframe id="iframe1" src="graph.html
+                            " frameborder="0" scrolling="no"></iframe>
+                            <script>
+                                var cssLink = document.createElement("link");
+                                cssLink.href = "./css/root.css"; 
+                                cssLink.rel = "stylesheet"; 
+                                cssLink.type = "text/css"; 
+                                // console.log("FRAMES:", frames['iframe1'], frames['iframe1'].document);
+                                frames[0].document.head.prepend(cssLink);
+                            </script>
+                        </div>
                         <h4>Philosopy</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur earum quas illo iusto accusamus minima reiciendis, similique aut officia aspernatur. Praesentium quibusdam delectus deserunt itaque reprehenderit explicabo blanditiis saepe molestias.</p>
+                        <p>Communication is a basic need for any entity.  Communication is achieved by inputs, receiving of information, and outputs, sending information.  We are all familiar with human communication through the <em class="tooltip-hover" alt="sight, sound, smell, taste, touch">five senses</em> that offer a richness and versatitily that is unique to our species. In web technologies, a computer is limited to two inputs; keyboard and mouse, and two outputs; <em class="tooltip-hover" alt="Mobile adds another dimesion with haptic vibration and tilt, but lets ignore this for now.">visual and sound</em>.  Additionally, modern web has deprecated use of sound for a more pleasing experience.</p>
                         <h4>Why it matters</h4>
-                        <p>Debitis doloribus porro excepturi eveniet asperiores ex adipisci, dolores temporibus vitae perferendis est blanditiis officiis necessitatibus corporis dolorum sequi? Id vero maiores facilis eligendi autem atque odio nam, voluptate dolore.</p>
+                        <p>So a web application is left with only visual cues to comunicate with its users.  For example, when it receives input of a mouse pointer hovering over a button, it can only output a visual cue that this button element will perform an action. </p>
+                        <p>It is then my job to facilitate the communication between the computer to the human</p>
                     </div>
                 </div>
             </section>
@@ -88,15 +123,37 @@
                     <div class="glass"></div>
                     <h2><span>Experience</span></h2>
                     <div class="block">
-                        <a href="http://">Resume</a>
-                        <!-- <iframe src="graph.html" frameborder="0"  scrolling="no"></iframe> -->
+                        <a href="http://"><span>Resume</span></a>
+                        <div class="grid-row">
+                            <div class="grid-column">
+                                <div class="tech" data-icon="html"></div>
+                                <div class="tech" data-icon="css"></div>
+                                <div class="tech" data-icon="js"></div>
+                                <div class="tech" data-icon="json"></div>
+                                <div class="tech" data-icon="xml"></div>
+                                <div class="tech" data-icon="php"></div>
+                                <div class="tech" data-icon="node"></div>
+                            </div>
+                            <div class="grid-column">
+                                <div class="tech" data-icon="cloud"></div>
+                                <div class="tech" data-icon="fl"></div>
+                                <div class="tech" data-icon="as"></div>
+                                <div class="tech" data-icon="ps"></div>
+                                <div class="tech" data-icon="ai"></div>
+                                <div class="tech" data-icon="id"></div>
+                                <div class="tech" data-icon="au"></div>
+                                <div class="tech" data-icon="dr"></div>
+                                <div class="tech" data-icon="xd"></div>
+                                <div class="tech" data-icon="ae"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
             <section id="s4">
                 <div class="container">
                     <div class="glass"></div>
-                    <h2><span>Work Samples</span></h2>
+                    <h2><span>Projects</span></h2>
                     <div class="block">
                         <p>Animations bring a website to life and captivate the attention of the visitor. One of the most common animations on websites is hover effects. Often, their purpose is to highlight important web page sections or elements. Hover effects can also add or emphasize interactive aspects of a page.</p>
                         <ul>

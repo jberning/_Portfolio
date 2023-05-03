@@ -2,23 +2,35 @@ html{
     font-size: 10px;
 }
 body{
-    --color: rgb(34, 16, 82);
-    --border-width: 0.4em;
-    --point-width: 5em;
-    --line-width: 18em;
-    --node-offset: 0.9em;
+    --color: var(--color-second-1, darkblue);
+    --color-icon: var(--color-prime-1,green);
+    --color-point-bg: var(--color-prime-7, wheat);
     background-color: transparent;
     color:var(--color, inherit);
+    font-size: min(3.2vw,4.2vh);
 }
-*::before, ::after, * {
-    /* box-sizing: content-box; */
-}
-*::before, ::after {
-    content: "";
-    display: block;
-    position: absolute;
-}
+/* :where(*,*::before, *::after) {
+    box-sizing: content-box;
+} */
 div{display: block;}
+.graph{
+    --border-width: 0.2em;
+    --point-width: 3em;
+    --line-width: 10em;
+    --node-offset: 0.9em;
+    --central-width: 5em;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    place-items: center;
+    z-index: 1;
+    animation: 1s infinite cubic-bezier(0.68, -0.55, 0.27, 1.55) alternate;
+    animation-name:wiggle-top, wiggle-left;
+    animation-duration:3s, 4.5s;
+    animation-composition: accumulate;
+}
 .node{
     position: absolute;
     display: flex;
@@ -26,16 +38,16 @@ div{display: block;}
     justify-items: center;
     justify-content: space-between;
     width: calc(var(--line-width) + (var(--point-width) * 2));
-    transform-origin: calc(var(--point-width)/2 - var(--node-offset)) 50%;
+    --to: calc(var(
+    --point-width)/2 + var(--border-width) / 2);
+    transform-origin: var(--to) var(--to);
     --tx: calc(var(
-    --point-width) + (var(--border-width)*2) );
-    --tx: calc(var(
-    --central-width) / 2 - var(--point-width) / 2 + var(--node-offset));
+    --central-width) / 2 - var(--point-width) / 2);
     translate: var(--tx) 0;
     --rot:0deg;
     z-index: -1;
     rotate: var(--rot);
-    animation: wiggle-rot 2s infinite alternate cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    animation: wiggle-rot 3s infinite alternate cubic-bezier(0.68, -0.55, 0.27, 1.55);
     animation-composition: accumulate;
     animation-fill-mode: both;
     animation-play-state: running;
@@ -58,72 +70,90 @@ div{display: block;}
     background-size: 60%;
     background-repeat: no-repeat;
     box-sizing: content-box;
+    /*  */
+    position: relative;
+     background-color: var(--color-point-bg);
+     fill: var(--color-icon) !important;
+     stroke: var(--color-icon) !important;
+     display: grid;
+     place-items: center;
+     --svg-pre: "url('data:image/svg+xml;utf8,";
+     --url: "<svg></svg>";
+     --svg-suf: "')";
+     /* background-image: url('data:image/svg+xml;utf8,<svg ...><g stroke="@{color}" ... /></g></svg>'); */
+     /* background-image: var(--svg-pre) var(--url) var(--svg-suf); */
+     background-image: var(--url);
+
+
 }
-.point .input{
-    /* background-color: blue ; */
-    border-color: transparent;
+.point img{
+  width: 65%;
+}
+/*.point::before{
+  content:"";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+    --mask: var(--url) center center no-repeat;
+    -webkit-mask: var(--mask);
+    mask: var(--mask);
+    -webkit-mask-size: contain;
+    mask-size: contain; 
+}*/
+.point.input{
+    background-color: transparent;
+    /* border-color: transparent; */
     /* border-right-color: currentColor; */
     position: relative;
     /* width: 5em; */
 }
-.point .output{
+.point.output{
     rotate: calc(var(--rot) * -1);
 }
 .central{
-    --central-width: 7em;
-    position: absolute;
     width: var(--central-width);
-    background-image: url(../images/web-page-svgrepo-com.svg);
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    display: flex;
-    place-items: center;
-    z-index: 1;
     font-size: 1em;
-    animation: 1s infinite cubic-bezier(0.68, -0.55, 0.27, 1.55) alternate;
-    animation-name:wiggle-top, wiggle-left;
-    animation-duration:2s, 3.5s;
-    animation-composition: accumulate;
 }
+/* .browser { --url: url(../images/web-page-svgrepo-com.svg);
+--url:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons'   fill-rule='nonzero'%3E%3Cpath d='M464,0H48C21.492,0,0,21.492,0,48v416c0,26.508,21.492,48,48,48h416c26.508,0,48-21.492,48-48V48 C512,21.492,490.508,0,464,0z M444.664,35c10.492,0,19,8.508,19,19s-8.508,19-19,19c-10.492,0-19-8.508-19-19 S434.172,35,444.664,35z M374.164,35c10.492,0,19,8.508,19,19s-8.508,19-19,19c-10.492,0-19-8.508-19-19S363.672,35,374.164,35z M303.664,35c10.492,0,19,8.508,19,19s-8.508,19-19,19c-10.492,0-19-8.508-19-19S293.172,35,303.664,35z M472,464 c0,4.406-3.586,8-8,8H48c-4.414,0-8-3.594-8-8V104h432V464z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
 .computer{ background-image: url(../images/computer-svgrepo-com.svg);}
 .tablet{ background-image: url(../images/tablet-material-with-play-mark-svgrepo-com.svg);}
 .phone{ background-image: url(../images/phone-225-svgrepo-com.svg);}
 .human{
     background-image: url(../images/profile-round-1346-svgrepo-com.svg);
-}
+} */
 
 
 /*  */
-.node:nth-of-type(1){
+.node:nth-of-type(2){
     --rot: 546deg;
 }
-.node:nth-of-type(2){
+.node:nth-of-type(3){
     --rot: 202deg;
   animation-delay:.2s;
 }
-.node:nth-of-type(3){
+.node:nth-of-type(4){
     --rot:160deg;
   animation-delay:-1s;
 }
 /* humans */
-.node:nth-of-type(4){
+.node:nth-of-type(5){
     --rot: -35deg;
   animation-delay: .2s;
 }
-.node:nth-of-type(5){
+.node:nth-of-type(6){
     --rot: -20deg;
   animation-delay: -.5s;
 }
-.node:nth-of-type(6){
+.node:nth-of-type(7){
     --rot: -4deg;
   animation-delay:-1.2s;
 }
-.node:nth-of-type(7){
+.node:nth-of-type(8){
     --rot: 11deg;
   animation-delay: .8s;
 }
-.node:nth-of-type(8){
+.node:nth-of-type(9){
     --rot: 39deg;
   animation-delay: -1.2s;
 }
@@ -134,18 +164,18 @@ div{display: block;}
 }
 @keyframes wiggle-rot{
     to {
-        --rot:2deg;
+        --rot:1.6deg;
 /*         rotate: 2deg; */
     }
 }
 @keyframes wiggle-top {
   to {
-    transform: translateY(10%);
+    transform: translateY(5%);
   }
 }
 @keyframes wiggle-left {
   to {
-    transform:translateX(10%);
+    transform:translateX(5%);
   }
 }
 
@@ -162,4 +192,30 @@ div{display: block;}
 }
 body{
     animation: line-grow 2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+svg.defs-only, body > svg{
+  display: block;
+  position: absolute;
+  height: 0;
+  width: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  overflow: hidden;
+}
+/* Example-specific styles */
+.scaling-svg-container {
+  position: relative; 
+  height:0; 
+  width: 100%; 
+  padding: 0;
+  padding-bottom: 100%; 
+  /* over-ride this inline for aspect ratio other than square */
+}
+.scaling-svg {
+  position: absolute; 
+  width: 60%;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
 }
